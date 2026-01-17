@@ -6,10 +6,12 @@ import uuid
 import time
 import logging
 import yt_dlp
+from dotenv import load_dotenv
+
+load_dotenv()
+TOKEN=os.getenv("BOT_TOKEN")
 
 
-
-BOT_TOKEN="8319252236:AAGrDnC3X_AjeDlE1zq7ZJxPU9zZwCVTuLc"
 
 
 
@@ -55,7 +57,7 @@ async def handle_message(update:Update, context:ContextTypes.DEFAULT_TYPE):
         
     except Exception as e:
         await update.message.reply_text(
-        f"⚠️ Failed to download reel.\nError: {e}"
+        f"⚠️ Failed to download reel.\nError: {str(e)}"
         )
 
     if os.path.exists(folder):
